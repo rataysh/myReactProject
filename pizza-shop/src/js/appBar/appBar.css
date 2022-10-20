@@ -1,0 +1,16 @@
+.PizzaShid {
+	position: absolute;
+	/* left: 129px;
+	top: 35px;
+	width: 144px;
+	height: 32px; */
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+	color: rgba(0,0,0,1.00);
+	font-family: Fira Sans;
+	font-size: 24px;
+	font-weight: 600;
+	/* line-height: 28.125px; */
+}
