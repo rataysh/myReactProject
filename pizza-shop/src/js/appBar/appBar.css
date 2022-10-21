@@ -1,9 +1,6 @@
-.PizzaShid {
+.LogoTextStyle {
 	position: absolute;
-	/* left: 129px;
-	top: 35px;
-	width: 144px;
-	height: 32px; */
+	margin: 10px 55px;
 	display: flex;
 	justify-content: center;
 	text-align: center;
@@ -12,5 +9,18 @@
 	font-family: Fira Sans;
 	font-size: 24px;
 	font-weight: 600;
-	/* line-height: 28.125px; */
+}
+
+.LogoImgStyle {
+	height: 55px;
+	width: 55px;
+	margin: 10px 0px;
+}
+
+.AppLogo {
+	position: relative;
+	display: flex;	
+	justify-content: flex-start;
+	flex-direction: row;
+	align-items: center;
 }

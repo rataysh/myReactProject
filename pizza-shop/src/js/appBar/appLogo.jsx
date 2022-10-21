@@ -1,14 +1,24 @@
 import React from "react";
 import "./appBar.css";
+// import ImgAsset from "../public";
+import logoImg from "../../assets/images/appBarLogo.png";
 
-function AppLogoAndName() {
-    return <span className="PizzaShid">Pizza Shoop</span>;
+const altDescription = "Shop logotype";
+
+function AppLogo() {
+    return (
+        <div className="AppLogo">
+            <img src={logoImg} alt={altDescription} className="LogoImgStyle" />
+            <span className="LogoTextStyle">Pizza Shop</span>
+        </div>
+    );
 }
 
-export default AppLogoAndName;
+export default AppLogo;
 
-{
-    /* <div className='Frame4354_Frame4354'>
+/* <span className="LogoTextStyle">Pizza Shoop</span> */
+
+/* <div className='Frame4354_Frame4354'>
 			<img className='margheritapizza2' src = {ImgAsset.Frame4354_margheritapizza2} />
 			<div className='Rectangle3788'/>
 			<div className='Rectangle3792'/>
@@ -136,4 +146,3 @@ export default AppLogoAndName;
 				</div>
 			</div>
 		</div> */
-}
