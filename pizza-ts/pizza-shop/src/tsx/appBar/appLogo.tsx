@@ -1,8 +1,7 @@
 import React from "react";
-import "../../assets/images/appBarLogo.png";
 
 const altDescription = "Shop logotype";
-const logoImg = "appBarLogo.png"
+const logoImg = require("../../images/appBarLogo.png");
 
 export function AppLogo() {
     return (
