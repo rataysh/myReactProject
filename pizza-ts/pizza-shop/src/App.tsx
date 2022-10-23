@@ -11,9 +11,14 @@ export function App() {
     <div className="container mx-auto p-5">
         <div className="flex place-items-center justify-between">
             <AppLogo />
-            {appBarMenuList.map(appBarMenuData => <AppMenu appBarMenuData={appBarMenuData} />)}
-            <AppFindAndBuy />
-            <AppSign />
+            <div className="flex w-1/5 justify-between">
+              <AppFindAndBuy />
+              <AppSign />
+            </div>
+           
+        </div>
+        <div className="w-1/3 mt-7 flex place-content-between">
+          {appBarMenuList.map(appBarMenuData => <AppMenu appBarMenuData={appBarMenuData} />)}
         </div>
     </div>
   );
