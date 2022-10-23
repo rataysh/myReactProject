@@ -1,4 +1,5 @@
-import { IappBarMenu } from './InterfaceAppMenu';
+import { IappBarMenu } from '../interface/InterfaceAppMenu';
+
 
 export const appBarMenuList: IappBarMenu[] = [
     { id: 0, eachMenu: "Home" },

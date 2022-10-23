@@ -3,7 +3,7 @@ import AppFindAndBuy from './tsx/appBar/appFindAndBuy';
 import { AppLogo } from './tsx/appBar/appLogo';
 import { AppMenu } from './tsx/appBar/appMenu';
 import { AppSign } from './tsx/appBar/appSign';
-import { appBarMenuList } from './tsx/appBar/requestFromBack/requestAppMenu';
+import { appBarMenuList } from './tsx/appBar/appBarRequest/requestAppMenu';
 
 
 export function App() {
