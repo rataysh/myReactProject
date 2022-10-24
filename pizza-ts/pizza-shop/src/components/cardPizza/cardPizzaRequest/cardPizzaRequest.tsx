@@ -1,38 +1,38 @@
 import { IcardPizza } from '../cardPizzaInterface/cardPizzaInterface';
 
 //КАРТИНКУ ТОЖЕ С БД
-const pepperoniImg = require("../../images/pepperoni_fresh.png");
-const fourCheeseImg = require("../../images/four_cheese.png");
-const chickenСlubImg = require("../../images/chicken_club.png");
-const fieryBqqImg = require("../../images/fiery_bqq.png");
+const pepperoniImg = require("../../../images/cardPizza/pepperoni_fresh.png");
+const fourCheeseImg = require("../../../images/cardPizza/four_cheese.png");
+const chickenСlubImg = require("../../../images/cardPizza/chicken_club.png");
+const fieryBqqImg = require("../../../images/cardPizza/fiery_bqq.png");
 
 
 export const requestCardPizza: IcardPizza[] = [
     { 
         id: 0,
         imgPizza: pepperoniImg,
-        title: 'Pepperoni Fresh',
+        name: 'Pepperoni Fresh',
         description: 'Tikka masala sauce, chicken, yoghurt & mint sauce, chilli pepper, onion red, pepper bell, mozzarella cheese',
         price: 11.80,
     },
     { 
-        id: 0,
+        id: 1,
         imgPizza: fourCheeseImg,
-        title: '4 Cheese',
+        name: '4 Cheese',
         description: 'Creamy sauce, cheddar, blue cheese, mozzarella cheese, hard cheese',
         price: 10.8,
     },
     { 
-        id: 0,
+        id: 2,
         imgPizza: chickenСlubImg,
-        title: 'Chicken Club',
+        name: 'Chicken Club',
         description: 'Bacon, red onions, mozzarella, extra chicken, creamy sauce',
         price: 11,
     },
     { 
-        id: 0,
+        id: 3,
         imgPizza: fieryBqqImg,
-        title: 'Fiery BBQ',
+        name: 'Fiery BBQ',
         description: 'Spicy beef, green peppers, pepperoni, marinara sauce, bbq sauce, mozzarella cheese, chilli peppers',
         price: 10.80,
     },
