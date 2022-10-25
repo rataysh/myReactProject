@@ -11,21 +11,21 @@ interface GitLinkTg {
 export function AboutDev(props: GitLinkTg) {
     return (
         <ul  className='flex items-center space-x-1 text-footer'>
-        <button>
-            <a href={props.gitLink} target="_blank" rel="noreferrer"> 
-                <AiFillGithub/>
-            </a>
-        </button>
-        <button>
-            <a href={props.linkedLink} target="_blank" rel="noreferrer">
-                <AiFillLinkedin/>
-            </a>
-        </button>
-        <button>
-            <a href={props.telegramLink} target="_blank" rel="noreferrer">
-                <BsTelegram/>
-            </a>
-        </button> 
-    </ul>
+            <button>
+                <a href={props.gitLink} target="_blank" rel="noreferrer"> 
+                    <AiFillGithub/>
+                </a>
+            </button>
+            <button>
+                <a href={props.linkedLink} target="_blank" rel="noreferrer">
+                    <AiFillLinkedin/>
+                </a>
+            </button>
+            <button>
+                <a href={props.telegramLink} target="_blank" rel="noreferrer">
+                    <BsTelegram/>
+                </a>
+            </button> 
+        </ul>
     )
 }
