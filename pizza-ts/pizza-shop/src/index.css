@@ -2,8 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 @layer components {
     .button-orange {
         @apply px-3 rounded-md bg-orange-500 font-mono text-white hover:bg-orange-300 transition-all duration-100;
+    }
+    .text-footer {
+        @apply text-sm font-medium text-slate-100;
     }
 }
