@@ -12,4 +12,7 @@
     .appBarFindInput {
         @apply px-2 border-2 border-orange-200 rounded-xl flex items-center justify-around;
     }
+    .appBarMenuHoverButton {
+        @apply hover:text-slate-700 hover:underline decoration-slate-700 underline-offset-2 transition-all duration-100;
+    }
 }

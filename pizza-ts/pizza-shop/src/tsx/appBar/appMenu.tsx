@@ -1,17 +1,16 @@
 import React from "react";
-import { IappBarMenu } from "./interface/InterfaceAppMenu";
 
-
-interface AppBarMenuProps {
-    appBarMenuData: IappBarMenu
+interface AllFuncGoTo {
+    refElement: object,
+    goToElement: (args: object) => void,
+    name: string
 }
-
-
-export function AppMenu(props: AppBarMenuProps) {
+    
+export function AppMenu(props: AllFuncGoTo ) {
     return (
-        <div className="hover:text-slate-700 hover:underline decoration-slate-700 underline-offset-2 transition-all duration-100">
-            <button className="font-serif flex place-items-center space-x-5">
-                <div className="text-sm">{props.appBarMenuData.eachMenu}</div>
+        <div className="font-serif">
+            <button className="appBarMenuHoverButton" onClick={() => props.goToElement(props.refElement)}>
+                {props.name}
             </button>
         </div>
     )
