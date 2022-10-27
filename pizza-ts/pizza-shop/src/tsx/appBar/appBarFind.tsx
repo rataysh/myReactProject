@@ -1,22 +1,13 @@
 import React, { useRef } from "react";
 
 export default function AppBarFind() {
-    // let [colorFocusedFindFlag, setColorFocusedFind] = useState(false)
     const refInput = useRef<HTMLInputElement>(null)
     const handleClick = () => {
         if (refInput && refInput.current) {
             refInput.current.focus()
         };
     }
-    // const changeFlag = () => {
-    //     setColorFocusedFind(colorFocusedFindFlag=!colorFocusedFindFlag);
-    //     if (colorFocusedFindFlag) {handleClick()};
-    // }
-    // useEffect(() => {
-    //     handleClick();
-    // }, [])  
-
-
+    
     return (
         <div className="flex place-items-center justify-between space-x-4">
             <form className= "hover md:appBarFindInput md:border-orange-200" >
