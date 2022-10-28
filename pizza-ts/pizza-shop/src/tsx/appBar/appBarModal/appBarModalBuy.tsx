@@ -2,17 +2,17 @@ import React from "react";
 
 interface IModalBuy {
     active: boolean,
-    setActive: () => void,
+    setActive: (arg: boolean) => void,
 }
 
 // appBarModalBuy  appBarModalBuyContent
 
-export default function AppBarModalBuy(props: IModalBuy) {
+export function AppBarModalBuy(props: IModalBuy) {
     return (
         props.active ? 
             <>
-                <div className="h-screen w-screen fixed top-0 left-0 z-50 flex items-center justify-end">
-                    <div className="bg-white p-20 w-1/3 h-screen relative rounded-lg shadow ">
+                <div onClick={() => props.setActive(false)} className={"appBarModalView"}>
+                    <div onClick={e => e.stopPropagation()} className="appBarModalViewContent">
                         test
                         terts
                         st
@@ -21,9 +21,14 @@ export default function AppBarModalBuy(props: IModalBuy) {
                         asfdghgjhk
                     </div>
                 </div>
-                <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                <div className="appBarModalViewBg"></div>
             </>
-        : null
+            :    
+            <>
+                <div onClick={() => props.setActive(false)} className="appBarModalView translate-x-full">
+                    <div onClick={e => e.stopPropagation()} className="appBarModalViewContent"></div>
+                </div>
+            </>
     )
 }
 

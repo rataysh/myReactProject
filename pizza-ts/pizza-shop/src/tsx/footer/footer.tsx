@@ -18,7 +18,7 @@ export function AboutAs() {
                             Frontend:
                         </p>
                         <AboutDev gitLink='https://github.com/rataysh'
-                         linkedLink='https://www.linkedin.com/in/denis-otkidach-ab946a216/?locale=en_US'
+                         linkedLink='https://www.linkedin.com/in/denis-otkidach-developer/?locale=en_US'
                          telegramLink='https://t.me/alabama_homie'/>
                     </div>
                     <div className='flex items-center space-x-1'>
