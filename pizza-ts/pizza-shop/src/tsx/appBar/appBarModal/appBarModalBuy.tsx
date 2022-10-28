@@ -1,26 +1,45 @@
 import React from "react";
+import { IcardPizza } from "../../../components/cardPizza/cardPizzaInterface/cardPizzaInterface";
+import { AppBarModalAllOrder } from "./appBarModalAllOrder";
+import { ModalPizza } from "./appBarModalPizza";
 
 interface IModalBuy {
     active: boolean,
     setActive: (arg: boolean) => void,
 }
 
-// appBarModalBuy  appBarModalBuyContent
+const pepperoniImg = require("../../../images/cardPizza/pepperoni_fresh.png");
+
+let addPizzaToOrder: IcardPizza[] = [
+    { 
+        id: 0,
+        imgPizza: pepperoniImg,
+        name: 'Pepperoni Fresh',
+        description: 'Tikka masala sauce, chicken, yoghurt & mint sauce, chilli pepper, onion red, pepper bell, mozzarella cheese',
+        price: 11.80,
+    },
+    { 
+        id: 0,
+        imgPizza: pepperoniImg,
+        name: 'Pepperoni Fresh',
+        description: 'Tikka masala sauce, chicken, yoghurt & mint sauce, chilli pepper, onion red, pepper bell, mozzarella cheese',
+        price: 11.80,
+    },
+]
 
 export function AppBarModalBuy(props: IModalBuy) {
     return (
         props.active ? 
             <>
                 <div onClick={() => props.setActive(false)} className={"appBarModalView"}>
-                    <div onClick={e => e.stopPropagation()} className="appBarModalViewContent">
-                        test
-                        terts
-                        st
-                        ahsh
-                        ahjajjj
-                        asfdghgjhk
-                    </div>
+                    <div onClick={e => e.stopPropagation()} className="appBarModalViewContent overflow-auto">
+                        {addPizzaToOrder.map(templateModalPizza => <ModalPizza templateModalPizza={templateModalPizza} key={templateModalPizza.id} />)}
+                        <div>
+                            {<AppBarModalAllOrder/>}
+                        </div>
+                    </div>  
                 </div>
+                
                 <div className="appBarModalViewBg"></div>
             </>
             :    
