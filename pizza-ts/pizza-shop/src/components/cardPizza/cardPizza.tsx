@@ -26,7 +26,7 @@ export function CardPizza(props: TemplateCardPizza) {
             <div className="mx-2 flex items-center place-content-between">
                     {props.templateCardPizza.price} $
                 <button className="button-orange">
-                    Add
+                    Select
                 </button>
             </div>  
         </div>

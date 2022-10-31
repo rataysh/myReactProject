@@ -4,11 +4,12 @@ import { IcardPizza } from "../../../components/cardPizza/cardPizzaInterface/car
 
 
 interface IModalPizza {
-    templateModalPizza: IcardPizza
+    templateModalPizza: IcardPizza,
+    // eachPizzaCountMultPrice: (count:number, price:number) => number,
 }
 
 
-export function ModalPizza(props: IModalPizza) {
+export const ModalPizza: React.FC<IModalPizza> = (props) => {
     const [couterEachPizza, setCounterEachPizza] = useState<number>(1);
 
     const incrementCounterEachPizza = () => {
@@ -18,6 +19,9 @@ export function ModalPizza(props: IModalPizza) {
         couterEachPizza > 1 ? setCounterEachPizza(couterEachPizza - 1) : setCounterEachPizza(1)
     }
 
+    // const eachPizzaCountMultPrice = () => {
+    //     return Number((couterEachPizza * props.templateModalPizza.price).toFixed(2))
+    // } 
 
     return (
         <>
@@ -39,7 +43,9 @@ export function ModalPizza(props: IModalPizza) {
                 </div>
                 <div className="flex justify-between items-center lg:px-5 md:px-3 sm:px-2">
                     <div className="mt-2">
-                        {(props.templateModalPizza.price * couterEachPizza).toFixed(2)} $
+                        {/* {eachPizzaCountMultPrice(couterEachPizza, props.templateModalPizza.price)} */}
+                        {/* {typeof(eachPizzaCountMultPrice())}
+                        {typeof(props.templateModalPizza.price)} */}
                     </div>
                     <div className="bg-slate-200 border border-slate-300 rounded-xl mt-2 flex items-center justify-center lg:space-x-2 md:space-x-1">
                         <button onClick={decrementCounterEachPizza} className={(couterEachPizza === 1 ? "disabled" : "") + " border-r border-slate-300"} >

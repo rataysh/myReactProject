@@ -10,6 +10,14 @@ interface IModalBuy {
 
 const pepperoniImg = require("../../../images/cardPizza/pepperoni_fresh.png");
 
+let allCounterItems:number = 0
+let allSummItems:number = 0
+
+// const eachPizzaCountMultPrice = (couter:number, price:number) => {
+//     allSummItems = Number((couter * price).toFixed(2));
+//     return allSummItems
+// } 
+
 let addPizzaToOrder: IcardPizza[] = [
     { 
         id: 0,
@@ -19,9 +27,9 @@ let addPizzaToOrder: IcardPizza[] = [
         price: 11.80,
     },
     { 
-        id: 0,
+        id: 1,
         imgPizza: pepperoniImg,
-        name: 'Pepperoni Fresh',
+        name: 'Pepperoni Fresh_1',
         description: 'Tikka masala sauce, chicken, yoghurt & mint sauce, chilli pepper, onion red, pepper bell, mozzarella cheese',
         price: 11.80,
     },
@@ -33,10 +41,12 @@ export function AppBarModalBuy(props: IModalBuy) {
             <>
                 <div onClick={() => props.setActive(false)} className={"appBarModalView"}>
                     <div onClick={e => e.stopPropagation()} className="appBarModalViewContent overflow-auto">
-                        {addPizzaToOrder.map(templateModalPizza => <ModalPizza templateModalPizza={templateModalPizza} key={templateModalPizza.id} />)}
-                        <div>
-                            {<AppBarModalAllOrder/>}
-                        </div>
+                        {allCounterItems} items for {allSummItems}
+                        {addPizzaToOrder.map(templateModalPizza => <ModalPizza 
+                        templateModalPizza={templateModalPizza} 
+                        key={templateModalPizza.id}  />)}
+                        <AppBarModalAllOrder/>
+                        {/* {eachPizzaCountMultPrice} */}
                     </div>  
                 </div>
                 

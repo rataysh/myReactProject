@@ -14,7 +14,7 @@ export function App() {
   const refHome = useRef<HTMLElement>(null);
   const refPizza = useRef<HTMLDivElement>(null);
   const refFooter = useRef<HTMLElement>(null);
-  const goToElement = (refElement: any) => {
+  const goToElement = (refElement: React.RefObject<HTMLElement>) => {
     if (refElement && refElement.current) {
       refElement.current.scrollIntoView({behavior: 'smooth'});
     }

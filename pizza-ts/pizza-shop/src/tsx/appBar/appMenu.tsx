@@ -1,8 +1,8 @@
 import React from "react";
 
 interface AllFuncGoTo {
-    refElement: object,
-    goToElement: (args: object) => void,
+    refElement: React.RefObject<HTMLElement>,
+    goToElement: (args: React.RefObject<HTMLElement>) => void,
     name: string
 }
     
