@@ -25,9 +25,20 @@ export const cartSlice = createSlice({
         state.pizzaList.push(action.payload);
         state.pizzaList[0].count = 1;
       } else {
-          const chekId = checkSimilarId(state.pizzaList, action.payload.id)
+          let flagUniq:boolean = false
+          for (let i = 0; i < state.pizzaList.length; i++) {
+            if (state.pizzaList[i].id === action.payload.id) {
+              flagUniq = true; 
+            }
+          }
+          flagUniq ? console.log("Элемент уже есть") : state.pizzaList.push(action.payload);
+        }
+          // console.log(checkSimilarId(state.pizzaList, action.payload.id));
+          // checkSimilarId(state.pizzaList, action.payload.id)
+            // ? console.log("Элемент уже есть")
+            // : state.pizzaList.push(action.payload) 
 
-        };
+      // console.log(state.pizzaList);
       
       // const findItem = state.pizzaList.find((obj) => obj.id === action.payload.id);
       // if (findItem) {
