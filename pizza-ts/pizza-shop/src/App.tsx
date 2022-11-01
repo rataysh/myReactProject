@@ -7,13 +7,16 @@ import { requestCardPizza } from './components/cardPizza/cardPizzaRequest/cardPi
 import { AboutAs } from './tsx/footer/footer';
 import AppBarFind from "./tsx/appBar/appBarFind";
 import AppBarBuy from "./tsx/appBar/appBarBuy";
-import { useDispatch, useSelector } from "react-redux";
+// import { useAppDispatch, useAppSelector } from "./hook";
+// import { addItem, removeItem, minusItem, clearItems } from "../src/redux/slices/cartSlice"
+
 
 
 
 
 export function App() {
-
+  // const cartList = useAppSelector(state => state.cart.pizzaList);
+  // const dispatch = useAppDispatch();
   
   const refHome = useRef<HTMLElement>(null);
   const refPizza = useRef<HTMLDivElement>(null);

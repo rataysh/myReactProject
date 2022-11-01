@@ -1,5 +1,7 @@
 import React from "react";
 import { IcardPizza } from "./cardPizzaInterface/cardPizzaInterface";
+import { useAppDispatch, useAppSelector } from "../../hook";
+import { addItem, removeItem, minusItem, clearItems } from "../../redux/slices/cartSlice"
 
 
 
@@ -9,6 +11,10 @@ interface TemplateCardPizza {
 
 
 export function CardPizza(props: TemplateCardPizza) {
+
+    const cartList = useAppSelector(state => state.cart.pizzaList);
+    const dispatch = useAppDispatch();
+
     return (
         <div className="p-1 border rounded-md shadow bg-slate-50 grid content-between items-center">
             <div className="flex justify-center">
@@ -25,7 +31,7 @@ export function CardPizza(props: TemplateCardPizza) {
             </div>
             <div className="mx-2 flex items-center place-content-between">
                     {props.templateCardPizza.price} $
-                <button className="button-orange">
+                <button onClick={() => dispatch(addItem(props.templateCardPizza))} className="button-orange">
                     Select
                 </button>
             </div>  
