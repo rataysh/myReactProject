@@ -31,25 +31,21 @@ export const cartSlice = createSlice({
               flagUniq = true; 
             }
           }
-          flagUniq ? console.log("Элемент уже есть") : state.pizzaList.push(action.payload);
+          if (flagUniq === false) {
+            state.pizzaList.push(action.payload);
+            state.pizzaList[state.pizzaList.length -1].count = 1;
+          } else {
+            console.log('Уже есть')
+            for (let i = 0; i < state.pizzaList.length; i++) {
+              if (state.pizzaList[i].id === action.payload.id) {
+                let tempCount:number = 1 
+                tempCount = state.pizzaList[i].count ?? 1 as number
+                tempCount += 1
+                state.pizzaList[i].count = tempCount                         
+            }            
+          }
         }
-          // console.log(checkSimilarId(state.pizzaList, action.payload.id));
-          // checkSimilarId(state.pizzaList, action.payload.id)
-            // ? console.log("Элемент уже есть")
-            // : state.pizzaList.push(action.payload) 
-
-      // console.log(state.pizzaList);
-      
-      // const findItem = state.pizzaList.find((obj) => obj.id === action.payload.id);
-      // if (findItem) {
-      //   findItem.count += 1;
-      // } else {
-      //   state.pizzaList.push({
-      //     ...action.payload,
-      //     count: 1,
-      //   });
-      // }
-      // state.totalPrice = calcTotalPrice(state.pizzaList);
+      }
     },
     minusItem(state, action: PayloadAction<number>) {
       const findItem = state.pizzaList.find((obj) => obj.id === action.payload);
@@ -58,8 +54,8 @@ export const cartSlice = createSlice({
       // }
       // state.totalPrice = calcTotalPrice(state.pizzaList);
     },
-    removeItem(state, action: PayloadAction<number>) {
-      state.pizzaList = state.pizzaList.filter((obj) => obj.id !== action.payload);
+    removeItem(state, action: PayloadAction<IcardPizza>) {
+      state.pizzaList = state.pizzaList.filter((obj) => obj.id !== action.payload.id);
       // state.totalPrice = calcTotalPrice(state.pizzaList);
     },
     clearItems(state) {
