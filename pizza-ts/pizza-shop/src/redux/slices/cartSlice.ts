@@ -46,13 +46,27 @@ export const cartSlice = createSlice({
         }
       }
     },
-    minusItem(state, action: PayloadAction<number>) {
-      const findItem = state.pizzaList.find((obj) => obj.id === action.payload);
+    minusItem(state, action: PayloadAction<IcardPizza>) {
+      for (let i = 0; i < state.pizzaList.length; i++) {
+        if (state.pizzaList[i].id === action.payload.id) {
+          let tempCount:number = 1; 
+          tempCount = state.pizzaList[i].count ?? 1 as number;
+          tempCount -= 1;
+          state.pizzaList[i].count = tempCount; 
+          tempCount === 0
+            ? state.pizzaList[i].count = 1
+            : state.pizzaList[i].count = tempCount                        
+        };
+      };
+      // tempCount > 0
+      // ? state.pizzaList[i].count = 1
+      // : state.pizzaList[i].count = tempCount 
+    },  
+      // const findItem = state.pizzaList.find((obj) => obj.id === action.payload);
       // if (findItem) {
       //   findItem.count -= 1;
       // }
       // state.totalPrice = calcTotalPrice(state.pizzaList);
-    },
     removeItem(state, action: PayloadAction<IcardPizza>) {
       state.pizzaList = state.pizzaList.filter((obj) => obj.id !== action.payload.id);
       // state.totalPrice = calcTotalPrice(state.pizzaList);

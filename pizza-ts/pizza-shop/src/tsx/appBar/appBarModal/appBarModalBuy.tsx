@@ -1,6 +1,8 @@
 import React from "react";
-import { IcardPizza } from "../../../components/cardPizza/cardPizzaInterface/cardPizzaInterface";
+// import { IcardPizza } from "../../../components/cardPizza/cardPizzaInterface/cardPizzaInterface";
 import { AppBarModalAllOrder } from "./appBarModalAllOrder";
+import { useAppSelector } from "../../../hook";
+import { ModalPizza } from "./appBarModalPizza";
 
 
 interface IModalBuy {
@@ -10,14 +12,16 @@ interface IModalBuy {
 
 
 export function AppBarModalBuy(props: IModalBuy) {
+    const cartList = useAppSelector(state => state.cart.pizzaList);
+
     return (
         props.active ? 
             <>
                 <div onClick={() => props.setActive(false)} className={"appBarModalView"}>
                     <div onClick={e => e.stopPropagation()} className="appBarModalViewContent overflow-auto">
-                        {/* {addPizzaToOrder.map(templateModalPizza => <ModalPizza 
+                        {cartList.map(templateModalPizza => <ModalPizza 
                         templateModalPizza={templateModalPizza} 
-                        key={templateModalPizza.id}  />)} */}
+                        key={templateModalPizza.id}  />)}
                         <AppBarModalAllOrder/>
                         {/* {eachPizzaCountMultPrice} */}
                     </div>  
