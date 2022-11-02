@@ -1,6 +1,6 @@
 import React from "react";
 import { IcardPizza } from "../../../components/cardPizza/cardPizzaInterface/cardPizzaInterface";
-
+import { useAppSelector } from "../../../hook";
 
 
 
@@ -11,8 +11,7 @@ interface IModalPizza {
 }
 
 
-export const ModalPizza: React.FC<IModalPizza> = (props) => {
-  
+export const ModalPizza: React.FC<IModalPizza> = () => {
     return (
         <>
             <div className="relative my-1 pb-2 pt-1 lg:px-4 md:px-2 sm:px-1 w-full flex-col items-center border rounded-xl bg-slate-50 lg:text-lg md:text-lg lg:font-medium md:font-medium font-sans">
@@ -25,7 +24,7 @@ export const ModalPizza: React.FC<IModalPizza> = (props) => {
                 </div>
                 <div className="relative flex sm:flex items-center">
                     <div className="w-1/5">
-                        <img src={props.templateModalPizza.imgPizza} alt={props.templateModalPizza.name}/>
+                        <img src={cartList.imgPizza} alt={props.templateModalPizza.name}/>
                     </div>
                     <div className="mx-1">
                         {props.templateModalPizza.name} 

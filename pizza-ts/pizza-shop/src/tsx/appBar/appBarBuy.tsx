@@ -6,7 +6,6 @@ import { useAppSelector } from "../../hook";
 export default function AppBarBuy() {
     const [active, setActive] = useState(false);
     
-    // const dispatch = useDispatch();
     const cartPrice = useAppSelector(state => state.cart.totalPrice);
     const cartList = useAppSelector(state => state.cart.pizzaList);
 

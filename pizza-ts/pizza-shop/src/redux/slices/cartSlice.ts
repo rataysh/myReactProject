@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { IcardPizza } from '../../components/cardPizza/cardPizzaInterface/cardPizzaInterface';
-import { checkSimilarId } from '../../logic/checkSimilarId';
 // import { calcTotalPrice } from '../../logic/calcTotalPrice';
 
 
