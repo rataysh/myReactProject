@@ -1,19 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { IcardPizza } from '../../components/cardPizza/cardPizzaInterface/cardPizzaInterface';
-// import { calcTotalPrice } from '../../logic/calcTotalPrice';
-
+import { calcCountAllPizza } from '../../logic/calcCountAllPizza';
+import { calcTotalPrice } from '../../logic/calcTotalPrice';
 
 
 export interface CartState {
   pizzaList: Array<IcardPizza>;
-  totalPrice: number;
+  totalPrice: string;
+  allCountPizza: number;
 }
 
 const initialState: CartState = {
   pizzaList: [],
-  totalPrice: 0,
+  totalPrice: "0",
+  allCountPizza: 0,
 }
+
 
 export const cartSlice = createSlice({
   name: 'cart',
@@ -34,7 +37,6 @@ export const cartSlice = createSlice({
             state.pizzaList.push(action.payload);
             state.pizzaList[state.pizzaList.length -1].count = 1;
           } else {
-            console.log('Уже есть')
             for (let i = 0; i < state.pizzaList.length; i++) {
               if (state.pizzaList[i].id === action.payload.id) {
                 let tempCount:number = 1 
@@ -45,6 +47,8 @@ export const cartSlice = createSlice({
           }
         }
       }
+      state.allCountPizza = calcCountAllPizza(state.pizzaList)
+      state.totalPrice = calcTotalPrice(state.pizzaList)
     },
     minusItem(state, action: PayloadAction<IcardPizza>) {
       for (let i = 0; i < state.pizzaList.length; i++) {
@@ -54,28 +58,23 @@ export const cartSlice = createSlice({
           tempCount -= 1;
           state.pizzaList[i].count = tempCount; 
           tempCount === 0
-            ? state.pizzaList[i].count = 1
+            ? state.pizzaList = state.pizzaList.filter((obj) => obj.id !== action.payload.id)
             : state.pizzaList[i].count = tempCount                        
         };
       };
-      // tempCount > 0
-      // ? state.pizzaList[i].count = 1
-      // : state.pizzaList[i].count = tempCount 
+      state.allCountPizza = calcCountAllPizza(state.pizzaList);
+      state.totalPrice = calcTotalPrice(state.pizzaList);
     },  
-      // const findItem = state.pizzaList.find((obj) => obj.id === action.payload);
-      // if (findItem) {
-      //   findItem.count -= 1;
-      // }
-      // state.totalPrice = calcTotalPrice(state.pizzaList);
     removeItem(state, action: PayloadAction<IcardPizza>) {
-      state.pizzaList = state.pizzaList.filter((obj) => obj.id !== action.payload.id);
-      // state.totalPrice = calcTotalPrice(state.pizzaList);
+      state.pizzaList = state.pizzaList.filter(obj => obj.id !== action.payload.id);
+      state.allCountPizza = calcCountAllPizza(state.pizzaList);
+      state.totalPrice = calcTotalPrice(state.pizzaList);
     },
     clearItems(state) {
       state.pizzaList = [];
-      state.totalPrice = 0;
+      state.totalPrice = "0";
+      state.allCountPizza = 0;
     },
-
   },
 })
 

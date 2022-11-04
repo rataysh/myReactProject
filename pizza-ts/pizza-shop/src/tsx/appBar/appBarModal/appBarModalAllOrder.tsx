@@ -1,8 +1,9 @@
 import React from "react";
-
+import { useAppSelector } from "../../../hook";
 
 
 export function AppBarModalAllOrder() {
+    const totalPrice = useAppSelector(state => state.cart.totalPrice);
     return (
         <>
             <div className="mt-20 relative h-1/3 p-5 bg-slate-50 border rounded-xl shadow-xl">
@@ -11,7 +12,7 @@ export function AppBarModalAllOrder() {
                         summa tovarov
                     </div>
                     <div>
-                        4 milliona tenge
+                        ${totalPrice}
                     </div>  
                 </div>
                 <div>

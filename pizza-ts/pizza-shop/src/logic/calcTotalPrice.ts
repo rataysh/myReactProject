@@ -1,8 +1,10 @@
-// import { IcardPizzaCart } from "../redux/slices/cartSlice";
-import React from 'react';
+import { IcardPizza } from '../components/cardPizza/cardPizzaInterface/cardPizzaInterface';
 
 
-// export const calcTotalPrice = (items: IcardPizzaCart[]) => {
-//     return items.reduce((sum, obj) => obj.price * obj.count + sum, 0);
-//   };
-  
+export const calcTotalPrice = (pizzaList: IcardPizza[]) => {
+    let tempTotalPrice:number = 0;
+    for (let i = 0; i < pizzaList.length; i++) {
+        tempTotalPrice += pizzaList[i].price*(pizzaList[i].count ?? 1)
+    }
+    return tempTotalPrice.toFixed(2)
+}
