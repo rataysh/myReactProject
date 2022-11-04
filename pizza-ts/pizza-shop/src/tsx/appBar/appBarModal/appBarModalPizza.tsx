@@ -1,7 +1,7 @@
 import React from "react";
 import { IListPizza } from "../../../components/cardPizza/cardPizzaInterface/cardPizzaInterface";
 import { useAppDispatch } from "../../../hook";
-import { addItem, removeItem, minusItem, clearItems } from "../../../redux/slices/cartSlice"
+import { addItem, removeItem, minusItem } from "../../../redux/slices/cartSlice"
 
 
 interface IModalPizza {
