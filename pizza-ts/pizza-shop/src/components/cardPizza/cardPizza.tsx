@@ -1,6 +1,6 @@
 import React from "react";
-import { IcardPizza, IListPizza } from "./cardPizzaInterface/cardPizzaInterface";
-import { useAppDispatch, useAppSelector } from "../../hook";
+import { IListPizza } from "./cardPizzaInterface/cardPizzaInterface";
+import { useAppDispatch } from "../../hook";
 import { addItem } from "../../redux/slices/cartSlice"
 
 
@@ -11,10 +11,7 @@ interface TemplateCardPizza {
 
 
 export const CardPizza: React.FC<TemplateCardPizza> = ( props ) => {
-    // props.templateCardPizza.count = 1
-    // const cartList = useAppSelector(state => state.cart.pizzaList);
     const dispatch = useAppDispatch();
-
     return (
         <div className="p-1 border rounded-md shadow bg-slate-50 grid content-between items-center">
             <div className="flex justify-center">

@@ -1,11 +1,7 @@
 import React from "react";
 import { IListPizza } from "../../../components/cardPizza/cardPizzaInterface/cardPizzaInterface";
-// import { IListPizza } from "../../../redux//slices/cartSlice";
 import { useAppDispatch } from "../../../hook";
 import { addItem, removeItem, minusItem, clearItems } from "../../../redux/slices/cartSlice"
-
-
-
 
 
 interface IModalPizza {
@@ -14,10 +10,7 @@ interface IModalPizza {
 
 
 export const ModalPizza: React.FC<IModalPizza> = (props) => {
-
     const dispatch = useAppDispatch();
-    // props.templateModalPizza.count = 0
-
     return (
         <>
             <div className="relative my-1 pb-2 pt-1 lg:px-4 md:px-2 sm:px-1 w-full flex-col items-center border rounded-xl bg-slate-50 lg:text-lg md:text-lg lg:font-medium md:font-medium font-sans">

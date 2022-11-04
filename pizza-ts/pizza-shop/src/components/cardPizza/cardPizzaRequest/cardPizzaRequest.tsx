@@ -1,12 +1,10 @@
 import { IcardPizza, IListPizza } from '../cardPizzaInterface/cardPizzaInterface';
-// import { IListPizza } from '../cardPizzaInterface/cardPizzaInterface';
 
 //КАРТИНКУ ТОЖЕ С БД
 const pepperoniImg = require("../../../images/cardPizza/pepperoni_fresh.png");
 const fourCheeseImg = require("../../../images/cardPizza/four_cheese.png");
 const chickenСlubImg = require("../../../images/cardPizza/chicken_club.png");
 const fieryBqqImg = require("../../../images/cardPizza/fiery_bqq.png");
-
 
 const requestCardPizzaInput: IcardPizza[] = [
     { 
@@ -95,8 +93,6 @@ const requestCardPizzaInput: IcardPizza[] = [
     },
 ];
 
-// const requestCardPizzaInput: IcardPizza[] = [
-
 export const requestCardPizza:IListPizza[] = requestCardPizzaInput.map((items) => {
         let tempVar  = {
             id: items.id,
@@ -108,15 +104,3 @@ export const requestCardPizza:IListPizza[] = requestCardPizzaInput.map((items) =
         }   
         return tempVar
     })
-
-// const requestCardPizza = requestCardPizzaInput.map((items) => {
-//     return ([
-//         items.id = items.id,
-//         items.name = items.name,
-//         items.imgPizza = items.imgPizza,
-//         items.description = items.description,
-//         items.count = 1,
-//         // items.description = items.description,
-//         ]
-//     )
-// })
