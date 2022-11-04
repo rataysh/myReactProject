@@ -1,5 +1,5 @@
 import React from "react";
-import { IcardPizza } from "../../../components/cardPizza/cardPizzaInterface/cardPizzaInterface";
+import { IListPizza } from "../../../components/cardPizza/cardPizzaInterface/cardPizzaInterface";
 // import { IListPizza } from "../../../redux//slices/cartSlice";
 import { useAppDispatch } from "../../../hook";
 import { addItem, removeItem, minusItem, clearItems } from "../../../redux/slices/cartSlice"
@@ -9,7 +9,7 @@ import { addItem, removeItem, minusItem, clearItems } from "../../../redux/slice
 
 
 interface IModalPizza {
-    templateModalPizza: IcardPizza,
+    templateModalPizza: IListPizza,
 }
 
 

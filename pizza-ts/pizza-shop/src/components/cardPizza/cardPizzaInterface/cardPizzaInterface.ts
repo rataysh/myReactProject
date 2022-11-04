@@ -8,3 +8,7 @@ export interface IcardPizza {
     price: number
     count?: number
 }
+
+export interface IListPizza extends IcardPizza {
+    count: number
+}

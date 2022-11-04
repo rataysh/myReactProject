@@ -43,6 +43,7 @@ export function App() {
             </div>
             <div className="mt-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
               {requestCardPizza.map(templateCardPizza => 
+              // templateCardPizza.count = 0,
               <CardPizza templateCardPizza={templateCardPizza} key={templateCardPizza.id} />)}
             </div>
           </div>

@@ -1,4 +1,5 @@
-import { IcardPizza } from '../cardPizzaInterface/cardPizzaInterface';
+import { IcardPizza, IListPizza } from '../cardPizzaInterface/cardPizzaInterface';
+// import { IListPizza } from '../cardPizzaInterface/cardPizzaInterface';
 
 //КАРТИНКУ ТОЖЕ С БД
 const pepperoniImg = require("../../../images/cardPizza/pepperoni_fresh.png");
@@ -7,7 +8,7 @@ const chickenСlubImg = require("../../../images/cardPizza/chicken_club.png");
 const fieryBqqImg = require("../../../images/cardPizza/fiery_bqq.png");
 
 
-export const requestCardPizza: IcardPizza[] = [
+const requestCardPizzaInput: IcardPizza[] = [
     { 
         id: 0,
         imgPizza: pepperoniImg,
@@ -93,3 +94,29 @@ export const requestCardPizza: IcardPizza[] = [
         price: 10.80,
     },
 ];
+
+// const requestCardPizzaInput: IcardPizza[] = [
+
+export const requestCardPizza:IListPizza[] = requestCardPizzaInput.map((items) => {
+        let tempVar  = {
+            id: items.id,
+            name: items.name,
+            imgPizza: items.imgPizza,
+            description: items.description,
+            price: items.price,
+            count: 1,
+        }   
+        return tempVar
+    })
+
+// const requestCardPizza = requestCardPizzaInput.map((items) => {
+//     return ([
+//         items.id = items.id,
+//         items.name = items.name,
+//         items.imgPizza = items.imgPizza,
+//         items.description = items.description,
+//         items.count = 1,
+//         // items.description = items.description,
+//         ]
+//     )
+// })

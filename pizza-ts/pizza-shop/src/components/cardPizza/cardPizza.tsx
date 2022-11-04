@@ -1,17 +1,17 @@
 import React from "react";
-import { IcardPizza } from "./cardPizzaInterface/cardPizzaInterface";
+import { IcardPizza, IListPizza } from "./cardPizzaInterface/cardPizzaInterface";
 import { useAppDispatch, useAppSelector } from "../../hook";
 import { addItem } from "../../redux/slices/cartSlice"
 
 
 
 interface TemplateCardPizza {
-    templateCardPizza: IcardPizza
+    templateCardPizza: IListPizza
 }
 
 
-export function CardPizza(props: TemplateCardPizza) {
-
+export const CardPizza: React.FC<TemplateCardPizza> = ( props ) => {
+    // props.templateCardPizza.count = 1
     // const cartList = useAppSelector(state => state.cart.pizzaList);
     const dispatch = useAppDispatch();
 
