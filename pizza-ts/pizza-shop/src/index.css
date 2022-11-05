@@ -24,4 +24,10 @@
     .appBarModalViewBg {
         @apply opacity-25 fixed inset-0 z-40 bg-black transition-all duration-200;
     }
+    .pizzaModalView {
+        @apply flex justify-center fixed top-20 h-4/5 w-full z-50 transition-all duration-300;
+    }
+    .pizzaModalViewContent {
+        @apply bg-white p-5 lg:w-2/5 w-2/3 rounded-lg shadow;
+    }
 }
