@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IListPizza } from "./cardPizzaInterface/cardPizzaInterface";
-import { useAppDispatch } from "../../hook";
-import { addItem } from "../../redux/slices/cartSlice"
+// import { useAppDispatch } from "../../hook";
+// import { addItem } from "../../redux/slices/cartSlice"
 import { ModalPizza } from "../modalPizza/modalPizza";
 
 
@@ -14,7 +14,7 @@ interface TemplateCardPizza {
 export const CardPizza: React.FC<TemplateCardPizza> = ( props ) => {
     const [active, setActive] = useState(false);
     
-    const dispatch = useAppDispatch();
+    // const dispatch = useAppDispatch();
     return (
         <>
             <div className="p-1 border rounded-md shadow bg-slate-50 grid content-between items-center">
@@ -32,7 +32,7 @@ export const CardPizza: React.FC<TemplateCardPizza> = ( props ) => {
                 </div>
                 <div className="mx-2 flex items-center place-content-between">
                         {props.templateCardPizza.price} $
-                    <button onClick={() => dispatch(addItem(props.templateCardPizza))} className="button-orange active:bg-orange-100 transition-all duration-200">
+                    <button onClick={() => setActive(true)} className="button-orange active:bg-orange-100 transition-all duration-200">
                         Select
                     </button>
                 </div>  
