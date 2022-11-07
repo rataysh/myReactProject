@@ -1,10 +1,5 @@
-import React from 'react';
-
+import React from "react";
 
 export function App() {
-  return (
-    <div>
-       TRENDING BAR
-    </div>
-  );
+  return <div>TRENDING BAR</div>;
 }
