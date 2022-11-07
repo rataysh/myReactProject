@@ -20,6 +20,7 @@ const initialState: CartState = {
 }
 
 
+
 export const cartSlice = createSlice({
   name: 'cart',
   initialState,
@@ -30,7 +31,7 @@ export const cartSlice = createSlice({
           state.pizzaList.push(action.payload)
         }else{
            for (let i = 0; i < state.pizzaList.length; i++) {
-            if (state.pizzaList[i].id === action.payload.id){
+            if (state.pizzaList[i].id === action.payload.id && state.pizzaList[i].size === action.payload.size){
               state.pizzaList[i].count += 1;
               tempUniq= true;
             }
@@ -44,13 +45,13 @@ export const cartSlice = createSlice({
     },
     minusItem(state, action: PayloadAction<IListPizza>) {
       for (let i = 0; i < state.pizzaList.length; i++) {
-        if (state.pizzaList[i].id === action.payload.id) {
+        if (state.pizzaList[i].id === action.payload.id && state.pizzaList[i].size === action.payload.size) {
           let tempCount:number = 1; 
           tempCount = state.pizzaList[i].count ?? 1 as number;
           tempCount -= 1;
           state.pizzaList[i].count = tempCount; 
           if (tempCount === 0) {
-            state.pizzaList = calcRemovePizza(state.pizzaList, action.payload.id)
+            state.pizzaList = calcRemovePizza(state.pizzaList, action.payload.id, action.payload.size)
           } else {
             state.pizzaList[i].count = tempCount
           }                       
@@ -60,7 +61,7 @@ export const cartSlice = createSlice({
       state.totalPrice = calcTotalPrice(state.pizzaList);
     },  
     removeItem(state, action: PayloadAction<IListPizza>) {
-      state.pizzaList = calcRemovePizza(state.pizzaList, action.payload.id)
+      state.pizzaList = calcRemovePizza(state.pizzaList, action.payload.id, action.payload.size)
       state.allCountPizza = calcCountAllPizza(state.pizzaList);
       state.totalPrice = calcTotalPrice(state.pizzaList);
     },

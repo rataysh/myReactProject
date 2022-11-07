@@ -33,7 +33,7 @@ export function AppBarModalBuy(props: IModalBuy) {
                                     </div>
                                     {cartList.map(templateModalPizza => <ModalPizza 
                                     templateModalPizza={templateModalPizza} 
-                                    key={templateModalPizza.id}  />)}
+                                    key={templateModalPizza.id + templateModalPizza.size}  />)}
                                     <AppBarModalAllOrder/>
                                 </>
                             :   <>

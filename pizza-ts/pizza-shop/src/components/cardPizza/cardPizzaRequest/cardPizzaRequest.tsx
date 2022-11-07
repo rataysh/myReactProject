@@ -101,6 +101,7 @@ export const requestCardPizza:IListPizza[] = requestCardPizzaInput.map((items) =
             description: items.description,
             price: items.price,
             count: 1,
+            size: "md"
         }   
         return tempVar
     })

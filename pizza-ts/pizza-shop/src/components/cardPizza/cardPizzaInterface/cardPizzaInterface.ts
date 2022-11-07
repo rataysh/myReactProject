@@ -11,10 +11,10 @@ export interface IcardPizza {
 
 export interface IListPizza extends IcardPizza {
     count: number;
-    // size: string;
-}
-
-export interface IPizzaWithSize extends IcardPizza {
-    count: number;
     size: string;
 }
+
+// export interface IPizzaWithSize extends IcardPizza {
+//     count: number;
+//     size: string;
+// }
