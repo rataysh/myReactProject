@@ -8,7 +8,7 @@ interface GitLinkTg {
   telegramLink: string;
 }
 
-export function AboutDev(props: GitLinkTg) {
+export const AboutDev:React.FC<GitLinkTg> = (props: GitLinkTg) => {
   return (
     <ul className="flex items-center space-x-1 text-footer">
       <button className="hover:scale-110 transition-all duration-200">

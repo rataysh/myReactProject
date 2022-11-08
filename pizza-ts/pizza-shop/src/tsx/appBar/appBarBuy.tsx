@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AppBarModalBuy } from "./appBarModal/appBarModalBuy";
 import { useAppSelector } from "../../hook";
 
-export default function AppBarBuy() {
+export const AppBarBuy:React.FC = () => {
   const [active, setActive] = useState(false);
 
   const cartPrice = useAppSelector((state) => state.cart.totalPrice);

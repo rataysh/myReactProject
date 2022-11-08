@@ -5,10 +5,10 @@ import { AppSign } from "./tsx/appBar/appSing";
 import { CardPizza } from "./components/cardPizza/cardPizza";
 import { requestCardPizza } from "./components/cardPizza/cardPizzaRequest/cardPizzaRequest";
 import { AboutAs } from "./tsx/footer/footer";
-import AppBarFind from "./tsx/appBar/appBarFind";
-import AppBarBuy from "./tsx/appBar/appBarBuy";
+import { AppBarFind } from "./tsx/appBar/appBarFind";
+import { AppBarBuy } from "./tsx/appBar/appBarBuy";
 
-export function App() {
+export const App:React.FC = () => {
   const refHome = useRef<HTMLElement>(null);
   const refPizza = useRef<HTMLDivElement>(null);
   const refFooter = useRef<HTMLElement>(null);

@@ -6,7 +6,7 @@ interface AllFuncGoTo {
   name: string;
 }
 
-export function AppMenu(props: AllFuncGoTo) {
+export const AppMenu:React.FC<AllFuncGoTo> = (props: AllFuncGoTo) => {
   return (
     <div className="font-serif">
       <button

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function AppBarFind() {
+export const AppBarFind: React.FC = () => {
   return (
     <>
       <form className="flex place-items-center justify-between space-x-2 hover md:appBarFindInput md:border-orange-200">
@@ -21,9 +21,9 @@ export default function AppBarFind() {
         <input
           className="hidden md:flex outline-none"
           type="text"
-          placeholder="Find your favorite pizza"
+          placeholder="Find your favorite pizza..."
         />
       </form>
     </>
   );
-}
+};

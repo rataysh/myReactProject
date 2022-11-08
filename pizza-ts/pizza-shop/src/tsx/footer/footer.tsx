@@ -1,7 +1,7 @@
 import React from "react";
 import { AboutDev } from "./aboutDev";
 
-export function AboutAs() {
+export const AboutAs:React.FC = () => {
   return (
     <div className="mt-20 p-4 bg-gradient-to-l from-slate-600 bg-slate-800 bottom-0">
       <div className="flex justify-between items-end">
