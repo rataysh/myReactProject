@@ -3,7 +3,7 @@ import { AboutDev } from "./aboutDev";
 
 export const AboutAs:React.FC = () => {
   return (
-    <div className="mt-20 p-4 bg-gradient-to-l from-slate-600 bg-slate-800 bottom-0">
+    <div className="p-4 bg-gradient-to-l from-slate-600 bg-slate-800">
       <div className="flex justify-between items-end">
         <p className="text-footer">This is a test project for the portfolio</p>
         <div className="">

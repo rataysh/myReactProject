@@ -27,14 +27,14 @@ export const AppBarFind: React.FC = () => {
 
   return (
     <>
-      <div className="relative invisible md:visible">
+      <div className="relative text-xs md:text-base">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1}
           stroke="currentColor"
-          className="w-4 h-4 z-10 absolute left-1 top-1.5 opacity-50"
+          className="w-4 h-4 z-10 absolute left-1 top-0.5 md:top-1.5 opacity-50"
         >
           <path
             strokeLinecap="round"
@@ -49,7 +49,7 @@ export const AppBarFind: React.FC = () => {
           viewBox="0 0 24 24"
           strokeWidth={1}
           stroke="currentColor"
-          className="w-4 h-4 z-10 absolute right-1.5 top-1.5 opacity-50 hover:opacity-100 hover:cursor-pointer "
+          className="w-4 h-4 z-10 absolute right-1.5 top-0.5 md:top-1.5 opacity-50 hover:opacity-100 hover:cursor-pointer "
         >
           <path
             strokeLinecap="round"
@@ -63,9 +63,9 @@ export const AppBarFind: React.FC = () => {
         <input
           value={value}
           onChange={onChangeInput}
-          className="px-7 py-0.5 appBarFindInput"
+          className="pl-5 md:px-7 py-0.5 appBarFindInput"
           type="text"
-          placeholder="Find your favorite pizza..."
+          placeholder="Find your pizza..."
         />
       </div>
     </>
