@@ -3,15 +3,19 @@ import { AppLogo } from "./tsx/appBar/appLogo";
 import { AppMenu } from "./tsx/appBar/appMenu";
 import { AppSign } from "./tsx/appBar/appSing";
 import { CardPizza } from "./components/cardPizza/cardPizza";
-import { requestCardPizza } from "./components/cardPizza/cardPizzaRequest/cardPizzaRequest";
+// import { requestCardPizza } from "./components/cardPizza/cardPizzaRequest/cardPizzaRequest";
 import { AboutAs } from "./tsx/footer/footer";
 import { AppBarFind } from "./tsx/appBar/appBarFind/appBarFind";
 import { AppBarBuy } from "./tsx/appBar/appBarBuy";
+import { useAppSelector } from "./hook";
 
 export const App: React.FC = () => {
   const refHome = useRef<HTMLElement>(null);
   const refPizza = useRef<HTMLDivElement>(null);
   const refFooter = useRef<HTMLElement>(null);
+  const pizzaListAfterFiltred = useAppSelector(
+    (state) => state.search.pizzaList
+  );
   const goToElement = (refElement: React.RefObject<HTMLElement>) => {
     if (refElement && refElement.current) {
       refElement.current.scrollIntoView({ behavior: "smooth" });
@@ -51,7 +55,7 @@ export const App: React.FC = () => {
           Pizza
         </div>
         <div className="mt-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-          {requestCardPizza.map((templateCardPizza) => (
+          {pizzaListAfterFiltred.map((templateCardPizza) => (
             // templateCardPizza.count = 0,
             <CardPizza
               templateCardPizza={templateCardPizza}
