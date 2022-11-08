@@ -10,7 +10,7 @@
         @apply text-sm font-medium text-slate-100;
     }
     .appBarFindInput {
-        @apply px-2 border-2 border-orange-200 rounded-xl flex items-center justify-around;
+        @apply border border-orange-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-orange-400 ;
     }
     .appBarMenuHoverButton {
         @apply hover:text-slate-700 hover:underline decoration-slate-700 underline-offset-2 transition-all duration-100;
