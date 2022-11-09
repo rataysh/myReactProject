@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { IListPizza } from "../../components/cardPizza/cardPizzaInterface/cardPizzaInterface";
 // import { requestCardPizza } from "../../API/allPizzaRequest/allPizzaRequest";
-import { requestCardPizza } from "./apiSlice";
+import { requestCardPizzaFromApi } from "./apiSlice";
 
 export interface SearchState {
   pizzaList: IListPizza[];
@@ -10,7 +10,7 @@ export interface SearchState {
 }
 
 const initialState: SearchState = {
-  pizzaList: requestCardPizza,
+  pizzaList: requestCardPizzaFromApi,
   valueSearch: "",
 };
 
@@ -20,7 +20,7 @@ export const searchSlice = createSlice({
   reducers: {
     searchPizza(state, action: PayloadAction<IListPizza[]>) {
       if (state.valueSearch === "") {
-        state.pizzaList = requestCardPizza;
+        state.pizzaList = requestCardPizzaFromApi;
       }
       state.pizzaList = state.pizzaList.filter(({ name }) =>
         name.toLocaleLowerCase().includes(state.valueSearch.toLocaleLowerCase())
