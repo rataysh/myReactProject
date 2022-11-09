@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { IListPizza } from "../../components/cardPizza/cardPizzaInterface/cardPizzaInterface";
-import { requestCardPizza } from "../../components/cardPizza/cardPizzaRequest/cardPizzaRequest";
+// import { requestCardPizza } from "../../API/allPizzaRequest/allPizzaRequest";
+import { requestCardPizza } from "./apiSlice";
 
 export interface SearchState {
-  pizzaList: Array<IListPizza>;
+  pizzaList: IListPizza[];
   valueSearch: string;
 }
 
