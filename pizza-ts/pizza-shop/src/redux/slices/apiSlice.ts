@@ -1,18 +1,17 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import {
-  IcardPizza,
-  IListPizza,
-} from "../../components/cardPizza/cardPizzaInterface/cardPizzaInterface";
-// import axios from "axios";
+import { IListPizza } from "../../components/cardPizza/cardPizzaInterface/cardPizzaInterface";
 
-type PizzaAPI = {
+export interface ApiState {
   pizzaList: IListPizza[];
+  valueSearch: string;
   loading: boolean;
   error: string | null;
-};
-const initialState: PizzaAPI = {
+}
+
+const initialStateSearch: ApiState = {
   pizzaList: [],
+  valueSearch: "",
   loading: false,
   error: null,
 };
@@ -21,8 +20,8 @@ export const fetchPizza = createAsyncThunk<
   IListPizza[],
   undefined,
   { rejectValue: string }
->("pizzaAPI/fetchPizzaAPI", async function (_, { rejectWithValue }) {
-  const response = await fetch("http://localhost:8000/admin/api/pizza");
+>("pizzaApi/fetchPizzaApi", async function (_, { rejectWithValue }) {
+  const response = await fetch("http://localhost:8000/api/pizza/");
   if (!response.ok) {
     return rejectWithValue("Server Error!");
   }
@@ -31,44 +30,36 @@ export const fetchPizza = createAsyncThunk<
   return data;
 });
 
-export const pizzaApiSlice = createSlice({
-  name: "pizzaAPI",
-  initialState,
-  reducers: {},
+export const searchSlice = createSlice({
+  name: "pizzaApi",
+  initialState: initialStateSearch,
+  reducers: {
+    searchPizza(state, action: PayloadAction<IListPizza[]>) {
+      if (state.valueSearch === "") {
+        state.pizzaList = action.payload;
+      }
+      state.pizzaList = state.pizzaList.filter(({ name }) =>
+        name.toLocaleLowerCase().includes(state.valueSearch.toLocaleLowerCase())
+      );
+    },
+    getValue(state, action: PayloadAction<string>) {
+      state.valueSearch = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
-    .addCase(fetchPizza.pending, (state) => {
+      .addCase(fetchPizza.pending, (state) => {
         state.loading = true;
         state.error = null;
-    })
-    .addCase(fetchPizza.fulfilled, (state, action) => {
+      })
+      .addCase(fetchPizza.fulfilled, (state, action) => {
         state.pizzaList = action.payload;
         state.loading = false;
-    })
-    // .addCase()
+      });
   },
 });
 
-// const testReq = async () => {
-//   const response = await axios.get("http://localhost:8000/api/pizza/");
-//   // let result: IcardPizza[] = response.data;
-//   let dPizza: IListPizza[] = [];
-//   Promise.resolve(
-//     response.data.then((items: IcardPizza) => {
-//       let tempVar = {
-//         id: items.id,
-//         name: items.name,
-//         imgPizza: items.imgPizza,
-//         description: items.description,
-//         price: items.price,
-//         count: 1,
-//         size: "md",
-//       };
-//       // return tempVar
-//       dPizza.push(tempVar);
-//     })
-//   );
-//   return dPizza;
-// };
+// Action creators are generated for each case reducer function
+export const { searchPizza, getValue } = searchSlice.actions;
 
-// export const requestCardPizzaFromApi = testReq();
+export default searchSlice.reducer;

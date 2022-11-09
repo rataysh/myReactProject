@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../../hook";
-import { getValue, searchPizza } from "../../../redux/slices/searchSlice";
+import { getValue, searchPizza } from "../../../redux/slices/apiSlice";
 
 export const AppBarFind: React.FC = () => {
   const dispatch = useAppDispatch();
-  const pizzaListSearh = useAppSelector((state) => state.search.pizzaList);
-  const [value, setValue] = useState<string>("")
+  const pizzaListSearh = useAppSelector((state) => state.api.pizzaList);
+  const [value, setValue] = useState<string>("");
 
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(getValue(event.target.value));
@@ -23,7 +23,7 @@ export const AppBarFind: React.FC = () => {
   const removeClear = () => {
     dispatch(getValue(""));
     setValue("");
-  }
+  };
 
   return (
     <>

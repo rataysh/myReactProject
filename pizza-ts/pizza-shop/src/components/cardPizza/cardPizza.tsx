@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { IListPizza } from "./cardPizzaInterface/cardPizzaInterface";
-// import { useAppDispatch } from "../../hook";
-// import { addItem } from "../../redux/slices/cartSlice"
 import { ModalPizza } from "../modalPizza/modalPizza";
 
 interface TemplateCardPizza {
@@ -10,8 +8,6 @@ interface TemplateCardPizza {
 
 export const CardPizza: React.FC<TemplateCardPizza> = (props) => {
   const [active, setActive] = useState(false);
-
-  // const dispatch = useAppDispatch();
   return (
     <>
       <div className="p-1 border rounded-md shadow bg-slate-50 grid content-between items-center">

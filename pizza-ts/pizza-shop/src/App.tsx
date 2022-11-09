@@ -1,21 +1,27 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { AppLogo } from "./tsx/appBar/appLogo";
 import { AppMenu } from "./tsx/appBar/appMenu";
 import { AppSign } from "./tsx/appBar/appSing";
 import { CardPizza } from "./components/cardPizza/cardPizza";
-// import { requestCardPizza } from "./components/cardPizza/cardPizzaRequest/cardPizzaRequest";
 import { AboutAs } from "./tsx/footer/footer";
 import { AppBarFind } from "./tsx/appBar/appBarFind/appBarFind";
 import { AppBarBuy } from "./tsx/appBar/appBarBuy";
-import { useAppSelector } from "./hook";
+import { useAppDispatch, useAppSelector } from "./hook";
+import { fetchPizza } from "./redux/slices/apiSlice";
 
 export const App: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const { loading, error } = useAppSelector((state) => state.api);
+  const pizzaListAfterFiltred = useAppSelector((state) => state.api.pizzaList);
+
+  useEffect(() => {
+    dispatch(fetchPizza());
+  }, [dispatch]);
+
   const refHome = useRef<HTMLElement>(null);
   const refPizza = useRef<HTMLDivElement>(null);
   const refFooter = useRef<HTMLElement>(null);
-  const pizzaListAfterFiltred = useAppSelector(
-    (state) => state.search.pizzaList
-  );
+
   const goToElement = (refElement: React.RefObject<HTMLElement>) => {
     if (refElement && refElement.current) {
       refElement.current.scrollIntoView({ behavior: "smooth" });
@@ -58,20 +64,23 @@ export const App: React.FC = () => {
           <p ref={refPizza} className="mt-7 font-sans text-3xl">
             Pizza
           </p>
-          {pizzaListAfterFiltred.length !== 0 ? (
-            <div className="mt-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-              {pizzaListAfterFiltred.map((templateCardPizza) => (
-                <CardPizza
-                  templateCardPizza={templateCardPizza}
-                  key={templateCardPizza.id}
-                />
-              ))}
-            </div>
-          ) : (
-            <span className=" mt-10 flex items-center justify-center font-sans text-3xl">
-              We could not find the pizza you requested, try again
-            </span>
-          )}
+
+          {loading && <h2>Loading...</h2>}
+          {error && <h2>An error occured: {error}</h2>}
+          <div className="mt-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+            {pizzaListAfterFiltred.map((templateCardPizza) => (
+              <CardPizza
+                templateCardPizza={templateCardPizza}
+                key={templateCardPizza.id}
+              />
+            ))}
+          </div>
+
+          {/* // : (
+          //   <span className=" mt-10 flex items-center justify-center font-sans text-3xl">
+          //     We could not find the pizza you requested, try again
+          //   </span>
+          // )} */}
         </body>
         <footer ref={refFooter} className="w-full bottom-0">
           <AboutAs />
