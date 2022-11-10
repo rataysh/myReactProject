@@ -1,74 +1,87 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
-import { IcardPizza } from '../../components/cardPizza/cardPizzaInterface/cardPizzaInterface';
-import { checkSimilarId } from '../../logic/checkSimilarId';
-// import { calcTotalPrice } from '../../logic/calcTotalPrice';
-
-
+import { createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { IListPizza } from "../../components/cardPizza/cardPizzaInterface/cardPizzaInterface";
+import { calcCountAllPizza } from "../../logic/calcCountAllPizza";
+import { calcTotalPrice } from "../../logic/calcTotalPrice";
+import { calcRemovePizza } from "../../logic/calcRemove";
 
 export interface CartState {
-  pizzaList: Array<IcardPizza>;
-  totalPrice: number;
+  pizzaList: Array<IListPizza>;
+  totalPrice: string;
+  allCountPizza: number;
 }
 
 const initialState: CartState = {
   pizzaList: [],
-  totalPrice: 0,
-}
+  totalPrice: "0.00",
+  allCountPizza: 0,
+};
 
 export const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState,
   reducers: {
-    addItem(state, action: PayloadAction<IcardPizza>) {
+    addItem(state, action: PayloadAction<IListPizza>) {
+      let tempUniq = false;
       if (state.pizzaList.length === 0) {
         state.pizzaList.push(action.payload);
-        state.pizzaList[0].count = 1;
       } else {
-          let flagUniq:boolean = false
-          for (let i = 0; i < state.pizzaList.length; i++) {
-            if (state.pizzaList[i].id === action.payload.id) {
-              flagUniq = true; 
-            }
+        for (let i = 0; i < state.pizzaList.length; i++) {
+          if (
+            state.pizzaList[i].id === action.payload.id &&
+            state.pizzaList[i].size === action.payload.size
+          ) {
+            state.pizzaList[i].count += 1;
+            tempUniq = true;
           }
-          flagUniq ? console.log("Элемент уже есть") : state.pizzaList.push(action.payload);
         }
-          // console.log(checkSimilarId(state.pizzaList, action.payload.id));
-          // checkSimilarId(state.pizzaList, action.payload.id)
-            // ? console.log("Элемент уже есть")
-            // : state.pizzaList.push(action.payload) 
-
-      // console.log(state.pizzaList);
-      
-      // const findItem = state.pizzaList.find((obj) => obj.id === action.payload.id);
-      // if (findItem) {
-      //   findItem.count += 1;
-      // } else {
-      //   state.pizzaList.push({
-      //     ...action.payload,
-      //     count: 1,
-      //   });
-      // }
-      // state.totalPrice = calcTotalPrice(state.pizzaList);
+        if (tempUniq === false) {
+          state.pizzaList.push(action.payload);
+        }
+      }
+      state.allCountPizza = calcCountAllPizza(state.pizzaList);
+      state.totalPrice = calcTotalPrice(state.pizzaList);
     },
-    minusItem(state, action: PayloadAction<number>) {
-      const findItem = state.pizzaList.find((obj) => obj.id === action.payload);
-      // if (findItem) {
-      //   findItem.count -= 1;
-      // }
-      // state.totalPrice = calcTotalPrice(state.pizzaList);
+    minusItem(state, action: PayloadAction<IListPizza>) {
+      for (let i = 0; i < state.pizzaList.length; i++) {
+        if (
+          state.pizzaList[i].id === action.payload.id &&
+          state.pizzaList[i].size === action.payload.size
+        ) {
+          let tempCount: number = 1;
+          tempCount = state.pizzaList[i].count ?? (1 as number);
+          tempCount -= 1;
+          state.pizzaList[i].count = tempCount;
+          if (tempCount === 0) {
+            state.pizzaList = calcRemovePizza(
+              state.pizzaList,
+              action.payload.id,
+              action.payload.size
+            );
+          } else {
+            state.pizzaList[i].count = tempCount;
+          }
+        }
+      }
+      state.allCountPizza = calcCountAllPizza(state.pizzaList);
+      state.totalPrice = calcTotalPrice(state.pizzaList);
     },
-    removeItem(state, action: PayloadAction<number>) {
-      state.pizzaList = state.pizzaList.filter((obj) => obj.id !== action.payload);
-      // state.totalPrice = calcTotalPrice(state.pizzaList);
+    removeItem(state, action: PayloadAction<IListPizza>) {
+      state.pizzaList = calcRemovePizza(
+        state.pizzaList,
+        action.payload.id,
+        action.payload.size
+      );
+      state.allCountPizza = calcCountAllPizza(state.pizzaList);
+      state.totalPrice = calcTotalPrice(state.pizzaList);
     },
     clearItems(state) {
       state.pizzaList = [];
-      state.totalPrice = 0;
+      state.totalPrice = "0";
+      state.allCountPizza = 0;
     },
-
   },
-})
+});
 
 // Action creators are generated for each case reducer function
 export const { addItem, removeItem, minusItem, clearItems } = cartSlice.actions;
