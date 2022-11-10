@@ -48,11 +48,11 @@ export const ModalPizza: React.FC<IModalPizza> = (props) => {
           <div className="w-1/5">
             <img
               src={props.templateModalPizza.imgPizza}
-              alt={props.templateModalPizza.name}
+              alt={props.templateModalPizza.title}
             />
           </div>
           <div className="flex flex-col mx-1">
-            <span>{props.templateModalPizza.name}</span>
+            <span>{props.templateModalPizza.title}</span>
             <span className="text-sm font-normal">{descriptionSize} size</span>
           </div>
         </div>

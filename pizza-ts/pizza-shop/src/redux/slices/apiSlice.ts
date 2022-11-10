@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { IListPizza } from "../../components/cardPizza/cardPizzaInterface/cardPizzaInterface";
+import { IcardPizza, IListPizza } from "../../components/cardPizza/cardPizzaInterface/cardPizzaInterface";
 
 export interface ApiState {
   pizzaList: IListPizza[];
@@ -26,7 +26,7 @@ export const fetchPizza = createAsyncThunk<
     return rejectWithValue("Server Error!");
   }
 
-  const data = await response.json();
+  const data:IListPizza[] = await response.json();
   return data;
 });
 
@@ -38,7 +38,7 @@ export const searchSlice = createSlice({
       if (state.valueSearch === "") {
         state.pizzaList = action.payload;
       }
-      state.pizzaList = state.pizzaList.filter(({ name }) =>
+      state.pizzaList = state.pizzaList.filter(({ title: name }) =>
         name.toLocaleLowerCase().includes(state.valueSearch.toLocaleLowerCase())
       );
     },

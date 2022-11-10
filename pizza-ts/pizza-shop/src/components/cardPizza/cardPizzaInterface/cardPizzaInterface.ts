@@ -1,7 +1,7 @@
 // Тут модель запроса
 export interface IcardPizza {
   id: number;
-  name: string;
+  title: string;
   imgPizza: string;
   description: string;
   price: number;

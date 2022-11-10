@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AppLogo } from "./tsx/appBar/appLogo";
 import { AppMenu } from "./tsx/appBar/appMenu";
 import { AppSign } from "./tsx/appBar/appSing";
@@ -8,14 +8,41 @@ import { AppBarFind } from "./tsx/appBar/appBarFind/appBarFind";
 import { AppBarBuy } from "./tsx/appBar/appBarBuy";
 import { useAppDispatch, useAppSelector } from "./hook";
 import { fetchPizza } from "./redux/slices/apiSlice";
+import { IListPizza } from "./components/cardPizza/cardPizzaInterface/cardPizzaInterface";
+import { transforICardToIList } from "./logic/transforICardToIList";
 
 export const App: React.FC = () => {
   const dispatch = useAppDispatch();
   const { loading, error } = useAppSelector((state) => state.api);
   const pizzaListAfterFiltred = useAppSelector((state) => state.api.pizzaList);
+  const [pizzaList, setPizzaList] = useState<IListPizza[]>([]);
 
   useEffect(() => {
     dispatch(fetchPizza());
+    console.log('first')
+    // transforICardToIList(pizzaListAfterFiltred);
+  }, []);
+
+  useEffect(() => {
+    const Debounce = setTimeout(() => {
+      console.log('second');
+      setPizzaList(
+        pizzaListAfterFiltred.map((items) => {
+          console.log("map");
+          let _ = {
+            id: items.id,
+            title: items.title,
+            imgPizza: items.imgPizza,
+            description: items.description,
+            price: items.price,
+            count: 1,
+            size: "md",
+          };
+          return _;
+        })
+      ); 
+    }, 500);
+    return () => clearTimeout(Debounce);
   }, [dispatch]);
 
   const refHome = useRef<HTMLElement>(null);
@@ -63,12 +90,19 @@ export const App: React.FC = () => {
         <body className="flex-auto mb-10">
           <p ref={refPizza} className="mt-7 font-sans text-3xl">
             Pizza
+            <button
+              onClick={() => {
+                console.log(pizzaList);
+              }}
+            >
+              Pizza
+            </button>
           </p>
 
           {loading && <h2>Loading...</h2>}
           {error && <h2>An error occured: {error}</h2>}
           <div className="mt-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-            {pizzaListAfterFiltred.map((templateCardPizza) => (
+            {pizzaList.map((templateCardPizza) => (
               <CardPizza
                 templateCardPizza={templateCardPizza}
                 key={templateCardPizza.id}
