@@ -15,21 +15,22 @@ export const App: React.FC = () => {
   const [pizzaList, setPizzaList] = useState<IListPizza[]>([]);
 
   useEffect(() => {
-    const Debounce = setTimeout(() => {}, 300);
-    if (valueSearch === "") {
-      console.log("first");
-      pizzaPromiss.then((items) => setPizzaList(items));
-    } else {
-      pizzaPromiss.then((items: IListPizza[]) =>
-        setPizzaList(
-          items.filter(({ title }) => {
-            return title
-              .toLocaleLowerCase()
-              .includes(valueSearch.toLocaleLowerCase());
-          })
-        )
-      );
-    }
+    const Debounce = setTimeout(() => {
+      if (valueSearch === "") {
+        console.log("first");
+        pizzaPromiss.then((items) => setPizzaList(items));
+      } else {
+        pizzaPromiss.then((items: IListPizza[]) =>
+          setPizzaList(
+            items.filter(({ title }) => {
+              return title
+                .toLocaleLowerCase()
+                .includes(valueSearch.toLocaleLowerCase());
+            })
+          )
+        );
+      }
+    }, 300);
     return () => clearTimeout(Debounce);
   }, [valueSearch]);
 
