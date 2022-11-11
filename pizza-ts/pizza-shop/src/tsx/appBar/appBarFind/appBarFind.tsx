@@ -1,24 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { useAppSelector, useAppDispatch } from "../../../hook";
-import { getValue, searchPizza } from "../../../redux/slices/apiSlice";
+import React, { useState } from "react";
+import { useAppDispatch } from "../../../hook";
+import { getValue } from "../../../redux/slices/apiSlice";
 
 export const AppBarFind: React.FC = () => {
   const dispatch = useAppDispatch();
-  const pizzaListSearh = useAppSelector((state) => state.api.pizzaList);
   const [value, setValue] = useState<string>("");
 
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(getValue(event.target.value));
     setValue(event.target.value);
-    // dispatch(searchPizza(pizzaListSearh));
   };
 
-  useEffect(() => {
-    const Debounce = setTimeout(() => {
-      dispatch(searchPizza(pizzaListSearh));
-    }, 300);
-    return () => clearTimeout(Debounce);
-  }, [value]);
+  // useEffect(() => {
+  //   const Debounce = setTimeout(() => {
+  //     dispatch(searchPizza(pizzaListSearh));
+  //   }, 300);
+  //   return () => clearTimeout(Debounce);
+  // }, [value]);
 
   const removeClear = () => {
     dispatch(getValue(""));

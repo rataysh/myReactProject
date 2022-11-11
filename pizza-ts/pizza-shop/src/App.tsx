@@ -6,40 +6,32 @@ import { CardPizza } from "./components/cardPizza/cardPizza";
 import { AboutAs } from "./tsx/footer/footer";
 import { AppBarFind } from "./tsx/appBar/appBarFind/appBarFind";
 import { AppBarBuy } from "./tsx/appBar/appBarBuy";
-import { useAppDispatch, useAppSelector } from "./hook";
-// import { fetchPizza } from "./redux/slices/apiSlice";
+import { useAppSelector } from "./hook";
 import { IListPizza } from "./components/cardPizza/cardPizzaInterface/cardPizzaInterface";
-import { transforICardToIList } from "./logic/transforICardToIList";
-import { getAllPizzaAPI } from "./API/requests";
-// import { requestAllPizzaAPI } from "./logic/requestAllPizzaAPI";
 
 export const App: React.FC = () => {
-  const dispatch = useAppDispatch();
-  // const { loading, error } = useAppSelector((state) => state.api);
-  // const pizzaListAfterFiltred = useAppSelector((state) => state.api.pizzaList);
+  const valueSearch = useAppSelector((state) => state.api.valueSearch);
+  const pizzaPromiss = useAppSelector((state) => state.api.pizzaPromiss);
   const [pizzaList, setPizzaList] = useState<IListPizza[]>([]);
 
-  // useEffect(() => {
-  //   const Debounce = setTimeout(() => {
-  //     // console.log(pizzaListAfterFiltred);
-  //     dispatch(fetchPizza()).then(
-  //       (elem) => elem
-  //     )
-  //   }, 300);
-  //   return () => clearTimeout(Debounce);
-  // }, []);
-
   useEffect(() => {
-    const Debounce = setTimeout(async () => {
-      const response = await fetch(getAllPizzaAPI);
-      if (!response.ok) {
-        return "Server Error!";
-      }
-      const data: IListPizza[] = await response.json();
-      setPizzaList(transforICardToIList(data));
-    }, 300);
+    const Debounce = setTimeout(() => {}, 300);
+    if (valueSearch === "") {
+      console.log("first");
+      pizzaPromiss.then((items) => setPizzaList(items));
+    } else {
+      pizzaPromiss.then((items: IListPizza[]) =>
+        setPizzaList(
+          items.filter(({ title }) => {
+            return title
+              .toLocaleLowerCase()
+              .includes(valueSearch.toLocaleLowerCase());
+          })
+        )
+      );
+    }
     return () => clearTimeout(Debounce);
-  }, []);
+  }, [valueSearch]);
 
   const refHome = useRef<HTMLElement>(null);
   const refPizza = useRef<HTMLDivElement>(null);
