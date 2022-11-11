@@ -18,7 +18,7 @@ export const AppBarFind: React.FC = () => {
       dispatch(searchPizza(pizzaListSearh));
     }, 300);
     return () => clearTimeout(Debounce);
-  }, [dispatch, pizzaListSearh, value]);
+  }, [value]);
 
   const removeClear = () => {
     dispatch(getValue(""));

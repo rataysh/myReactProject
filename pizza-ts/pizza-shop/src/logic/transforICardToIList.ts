@@ -1,11 +1,8 @@
-// import { useAppDispatch, useAppSelector } from "../hook";
-// import React from "react";
 import { IListPizza } from "../components/cardPizza/cardPizzaInterface/cardPizzaInterface";
 
 
-export const transforICardToIList = (pizzaListAfterFiltred: IListPizza[], ) => {
-  console.log(
-      pizzaListAfterFiltred.map((items) => {
+export const transforICardToIList = (pizzaAPI: IListPizza[], ) => {
+      const result = pizzaAPI.map((items) => {
           let _ = {
             id: items.id,
             title: items.title,
@@ -17,7 +14,5 @@ export const transforICardToIList = (pizzaListAfterFiltred: IListPizza[], ) => {
           };
           return _;
         })
-      ); 
-    
-    
+      return result    
 };

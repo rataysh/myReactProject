@@ -7,43 +7,39 @@ import { AboutAs } from "./tsx/footer/footer";
 import { AppBarFind } from "./tsx/appBar/appBarFind/appBarFind";
 import { AppBarBuy } from "./tsx/appBar/appBarBuy";
 import { useAppDispatch, useAppSelector } from "./hook";
-import { fetchPizza } from "./redux/slices/apiSlice";
+// import { fetchPizza } from "./redux/slices/apiSlice";
 import { IListPizza } from "./components/cardPizza/cardPizzaInterface/cardPizzaInterface";
 import { transforICardToIList } from "./logic/transforICardToIList";
+import { getAllPizzaAPI } from "./API/requests";
+// import { requestAllPizzaAPI } from "./logic/requestAllPizzaAPI";
 
 export const App: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { loading, error } = useAppSelector((state) => state.api);
-  const pizzaListAfterFiltred = useAppSelector((state) => state.api.pizzaList);
+  // const { loading, error } = useAppSelector((state) => state.api);
+  // const pizzaListAfterFiltred = useAppSelector((state) => state.api.pizzaList);
   const [pizzaList, setPizzaList] = useState<IListPizza[]>([]);
 
-  useEffect(() => {
-    dispatch(fetchPizza());
-    console.log('first')
-    // transforICardToIList(pizzaListAfterFiltred);
-  }, []);
+  // useEffect(() => {
+  //   const Debounce = setTimeout(() => {
+  //     // console.log(pizzaListAfterFiltred);
+  //     dispatch(fetchPizza()).then(
+  //       (elem) => elem
+  //     )
+  //   }, 300);
+  //   return () => clearTimeout(Debounce);
+  // }, []);
 
   useEffect(() => {
-    const Debounce = setTimeout(() => {
-      console.log('second');
-      setPizzaList(
-        pizzaListAfterFiltred.map((items) => {
-          console.log("map");
-          let _ = {
-            id: items.id,
-            title: items.title,
-            imgPizza: items.imgPizza,
-            description: items.description,
-            price: items.price,
-            count: 1,
-            size: "md",
-          };
-          return _;
-        })
-      ); 
-    }, 500);
+    const Debounce = setTimeout(async () => {
+      const response = await fetch(getAllPizzaAPI);
+      if (!response.ok) {
+        return "Server Error!";
+      }
+      const data: IListPizza[] = await response.json();
+      setPizzaList(transforICardToIList(data));
+    }, 300);
     return () => clearTimeout(Debounce);
-  }, [dispatch]);
+  }, []);
 
   const refHome = useRef<HTMLElement>(null);
   const refPizza = useRef<HTMLDivElement>(null);
@@ -90,31 +86,24 @@ export const App: React.FC = () => {
         <body className="flex-auto mb-10">
           <p ref={refPizza} className="mt-7 font-sans text-3xl">
             Pizza
-            <button
-              onClick={() => {
-                console.log(pizzaList);
-              }}
-            >
-              Pizza
-            </button>
           </p>
 
-          {loading && <h2>Loading...</h2>}
-          {error && <h2>An error occured: {error}</h2>}
-          <div className="mt-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-            {pizzaList.map((templateCardPizza) => (
-              <CardPizza
-                templateCardPizza={templateCardPizza}
-                key={templateCardPizza.id}
-              />
-            ))}
-          </div>
-
-          {/* // : (
-          //   <span className=" mt-10 flex items-center justify-center font-sans text-3xl">
-          //     We could not find the pizza you requested, try again
-          //   </span>
-          // )} */}
+          {/* {loading && <h2>Loading...</h2>}
+          {error && <h2>An error occured: {error}</h2>} */}
+          {pizzaList.length !== 0 ? (
+            <div className="mt-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+              {pizzaList.map((templateCardPizza) => (
+                <CardPizza
+                  templateCardPizza={templateCardPizza}
+                  key={templateCardPizza.id}
+                />
+              ))}
+            </div>
+          ) : (
+            <span className=" mt-10 flex items-center justify-center font-sans text-3xl">
+              We could not find the pizza you requested, try again
+            </span>
+          )}
         </body>
         <footer ref={refFooter} className="w-full bottom-0">
           <AboutAs />
