@@ -10,7 +10,7 @@ interface GitLinkTg {
 
 export const AboutDev:React.FC<GitLinkTg> = (props: GitLinkTg) => {
   return (
-    <ul className="flex items-center space-x-1 text-footer">
+    <ul className="py-2 flex items-center justify-center space-x-1 text-footer">
       <button className="hover:scale-110 transition-all duration-200">
         <a href={props.gitLink} target="_blank" rel="noreferrer">
           <AiFillGithub />

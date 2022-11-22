@@ -5,7 +5,7 @@ import {AppLogo} from "./tsx/appBar/appLogo";
 import {AppMenu} from "./tsx/appBar/appMenu";
 import {AppSign} from "./tsx/appBar/appSing";
 import {CardPizza} from "./components/cardPizza/cardPizza";
-import {AboutAs} from "./tsx/footer/footer";
+import {AboutMe} from "./tsx/footer/footer";
 import {AppBarFind} from "./tsx/appBar/appBarFind/appBarFind";
 import {AppBarBuy} from "./tsx/appBar/appBarBuy";
 import {useAppSelector} from "./hook";
@@ -44,16 +44,14 @@ export const App: React.FC = () => {
                         <AppMenu
                             refElement={refFooter}
                             goToElement={goToElement}
-                            name={"About us"}
+                            name={"About me"}
                         />
                     </nav>
                     <AppBarBuy />
                 </div>
 
                 <body className='flex-auto mb-10'>
-                    <p className='mt-7 font-sans text-3xl'>
-                        Pizza
-                    </p>
+                    <p className='mt-7 font-sans text-3xl'>Pizza</p>
                     {/* 
           {loading && <h2>Loading...</h2>}
           {error && <h2>An error occured: {error}</h2>} */}
@@ -73,7 +71,7 @@ export const App: React.FC = () => {
                     )}
                 </body>
                 <footer ref={refFooter} className='w-full bottom-0'>
-                    <AboutAs />
+                    <AboutMe />
                 </footer>
             </div>
         </div>

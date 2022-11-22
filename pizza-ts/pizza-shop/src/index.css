@@ -15,7 +15,7 @@
          @apply m-1 p-0.5 w-11/12 hover:p-0 hover:rotate-3 transition-all duration-200
     }
     .text-footer {
-        @apply text-sm font-medium text-slate-100;
+        @apply text-xl font-medium text-slate-100;
     }
     .appBarFindInput {
         @apply border border-orange-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-orange-400;
