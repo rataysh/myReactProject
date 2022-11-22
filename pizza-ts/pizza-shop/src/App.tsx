@@ -16,7 +16,6 @@ export const App: React.FC = () => {
     );
 
     const refHome = useRef<HTMLElement>(null);
-    const refPizza = useRef<HTMLDivElement>(null);
     const refFooter = useRef<HTMLElement>(null);
 
     const goToElement = (refElement: React.RefObject<HTMLElement>) => {
@@ -43,11 +42,6 @@ export const App: React.FC = () => {
                             name={"Home"}
                         />
                         <AppMenu
-                            refElement={refPizza}
-                            goToElement={goToElement}
-                            name={"Pizza"}
-                        />
-                        <AppMenu
                             refElement={refFooter}
                             goToElement={goToElement}
                             name={"About us"}
@@ -57,7 +51,7 @@ export const App: React.FC = () => {
                 </div>
 
                 <body className='flex-auto mb-10'>
-                    <p ref={refPizza} className='mt-7 font-sans text-3xl'>
+                    <p className='mt-7 font-sans text-3xl'>
                         Pizza
                     </p>
                     {/* 
