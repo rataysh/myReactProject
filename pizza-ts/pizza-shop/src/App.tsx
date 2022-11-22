@@ -58,7 +58,7 @@ export const App: React.FC = () => {
           {loading && <h2>Loading...</h2>}
           {error && <h2>An error occured: {error}</h2>} */}
                     {pizzaListAfterFiltred.length !== 0 ? (
-                        <div className='mt-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2'>
+                        <div className='mt-5 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2'>
                             {pizzaListAfterFiltred.map((templateCardPizza) => (
                                 <CardPizza
                                     templateCardPizza={templateCardPizza}
