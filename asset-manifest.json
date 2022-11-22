@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/myReactProject/static/css/main.a3fd09a2.css",
+    "main.js": "/myReactProject/static/js/main.99c1b768.js",
+    "static/media/fiery_bqq.png": "/myReactProject/static/media/fiery_bqq.03d0b4ce82bb35efb132.png",
+    "static/media/pepperoni_fresh.png": "/myReactProject/static/media/pepperoni_fresh.d7f9d6a51ad9a68a8a56.png",
+    "static/media/four_cheese.png": "/myReactProject/static/media/four_cheese.cbfba9e016a3e4e2a32e.png",
+    "static/media/chicken_club.png": "/myReactProject/static/media/chicken_club.7033bc2308512edeb146.png",
+    "static/media/eptyCart.png": "/myReactProject/static/media/eptyCart.aaa0271a022ab1123f2c.png",
+    "static/media/appBarLogo.png": "/myReactProject/static/media/appBarLogo.c7c914f7871f3c77f571.png",
+    "index.html": "/myReactProject/index.html",
+    "main.a3fd09a2.css.map": "/myReactProject/static/css/main.a3fd09a2.css.map",
+    "main.99c1b768.js.map": "/myReactProject/static/js/main.99c1b768.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a3fd09a2.css",
+    "static/js/main.99c1b768.js"
+  ]
+}
