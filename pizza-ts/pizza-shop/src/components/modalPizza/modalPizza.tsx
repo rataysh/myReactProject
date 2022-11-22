@@ -42,7 +42,7 @@ export const ModalPizza: React.FC<ITemplateModalPizza> = (props) => {
                     <div className='flex justify-end items-end relative'>
                         <button
                             onClick={() => props.setActive(false)}
-                            className=' abslolute z-10 absolute rigth-1 top-0.5'>
+                            className='absolute z-10 rigth-1 top-0.5'>
                             <svg
                                 xmlns='http://www.w3.org/2000/svg'
                                 fill='none'
