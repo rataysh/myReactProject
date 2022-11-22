@@ -1,4 +1,5 @@
-# myReactProject
-My React js projects
+# This is a project for my portfolio
 
-## [VIEW](https://rataysh.github.io/myReactProject/)
+## [Pizza Shop](https://rataysh.github.io/myReactProject/)
+
+
