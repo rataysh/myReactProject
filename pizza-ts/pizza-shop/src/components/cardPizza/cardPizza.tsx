@@ -34,7 +34,7 @@ export const CardPizza: React.FC<TemplateCardPizza> = (props) => {
                         </span>
                     </div>
                     <div className='mt-5 mx-2 flex flex-row items-center place-content-between'>
-                        {props.templateCardPizza.price} $
+                        ${props.templateCardPizza.price}
                         <button
                             onClick={() => setActive(true)}
                             className='button-orange active:bg-orange-100 transition-all duration-200'>
