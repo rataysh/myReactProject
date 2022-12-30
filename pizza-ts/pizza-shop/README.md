@@ -1,46 +1,49 @@
-# Getting Started with Create React App
+# This is a project for my portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## [Pizza Shop](https://rataysh.github.io/myReactProject/)
 
-## Available Scripts
+## I used the following set of tools to create this project:
+### 1) Typescript 
+- The entire project is made with typescript
+- Custom interfaces/typescript
+### 2) React 
+- Using basic hooks (useState, useEffect, useRef).
+- Transferring data via props, callback, context, redux.
+- Creating reusable components 
+- Version with backend (in the same repository), also working with API via fetch
+### 3) Redux-toolkit
+- Creating store, slice, reducers
+- Interacting with data through useAppDispatch, useAppSelector
+- Working with API using createAsyncThunk (theoretical knowledge of RTK Query)
+### 4) Tailwind CSS.
+- All styling of your project is done with this framework
+- Adaptive layout 
+- Animation
+- Tailwind @apply
+### 5) Git
+- Add, commit, push
+- Work with branchs (checkout, merge)
+### 6) Teamwork
+- Teamwork with backend developer
 
-In the project directory, you can run:
+## Screenshots
+- Desktop view
 
-### `npm start`
+![image](https://user-images.githubusercontent.com/88318279/203384769-c6093f14-c4f3-44e1-8b14-ac635e298359.png)
+- Mobile view
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![image](https://user-images.githubusercontent.com/88318279/203385029-c0199630-3117-4a03-b631-3a5285f41a82.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Search
 
-### `npm test`
+![image](https://user-images.githubusercontent.com/88318279/203385453-128b7d90-39d6-43ed-a5d1-f841ec5d0fd8.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Cart with items
 
-### `npm run build`
+![image](https://user-images.githubusercontent.com/88318279/203385681-6c6266d6-ff43-498a-aeaf-d70bbe9aba67.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Pizza modal view
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![image](https://user-images.githubusercontent.com/88318279/203386014-dc4465dc-0a1d-4c92-b932-629e23c67090.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
